@@ -1,6 +1,7 @@
 name: Deploy
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main   # Trigger deploy when code is pushed to the main branch
