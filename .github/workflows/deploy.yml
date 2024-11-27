@@ -28,6 +28,9 @@ jobs:
       # Step 3: Add server to known hosts (for security)
       - name: Add SSH known hosts
         run: ssh-keyscan -H 51.250.107.205 >> ~/.ssh/known_hosts
+      #Step 3.5 List of files
+      - name: List files in the current directory
+        run: ls -alh
 
       # Step 4: Copy application code to the server
       - name: Copy files to remote server
