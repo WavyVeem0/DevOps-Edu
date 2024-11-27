@@ -15,4 +15,4 @@ jobs:
 
     steps:
     - name: "Run Docker Compose"
-      run: docker compose up -f ../docker-compose.yml -d 
+      run: docker-compose up -f ../docker-compose.yml -d 
