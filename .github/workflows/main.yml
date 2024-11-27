@@ -11,5 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    steps:
     – name: Run Docker Compose
       run: docker-compose up -d
