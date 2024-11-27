@@ -13,5 +13,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    – name: Run Docker Compose
-      run: docker-compose up -d
+    - name: "Run Docker Compose"
+      run: sudo docker compose up --build
