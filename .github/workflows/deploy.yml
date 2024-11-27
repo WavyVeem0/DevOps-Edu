@@ -35,7 +35,7 @@ jobs:
       # Step 4: Copy application code to the server
       - name: Copy files to remote server
         run: |
-          scp -r ./ admin@51.250.107.205:/home/admin/app
+          scp -r ./* admin@51.250.107.205:/home/admin/app
 
       # Step 5: SSH into the server and run Docker Compose commands
       - name: Deploy with Docker Compose
