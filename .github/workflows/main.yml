@@ -16,5 +16,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - run: ls
     - name: "Run Docker Compose"
       run: docker-compose up -d 
