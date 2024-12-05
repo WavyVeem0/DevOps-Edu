@@ -30,8 +30,9 @@ jobs:
       - name: Add SSH known hosts
         run: ssh-keyscan -H ${{ github.event.inputs.server }} >> ~/.ssh/known_hosts
       #Step 3.5 List of files
-      - name: List files in the current directory
-        run: ls -alh
+      - name: Create app dir if necesarry
+        continue-on-error: true
+        run: mkdir -p /home/admin/app
 
       # Step 4: Copy application code to the server
       - name: Copy files to remote server
