@@ -2,6 +2,10 @@ name: Deploy
 
 on:
   workflow_dispatch:
+    inputs:
+      server:
+        description: 'Deploy server'
+        required: True
 
 jobs:
   deploy:
@@ -24,7 +28,7 @@ jobs:
 
       # Step 3: Add server to known hosts (for security)
       - name: Add SSH known hosts
-        run: ssh-keyscan -H 51.250.107.205 >> ~/.ssh/known_hosts
+        run: ssh-keyscan -H ${{ github.event.inputs.server }} >> ~/.ssh/known_hosts
       #Step 3.5 List of files
       - name: List files in the current directory
         run: ls -alh
@@ -32,12 +36,12 @@ jobs:
       # Step 4: Copy application code to the server
       - name: Copy files to remote server
         run: |
-          scp -r ./* admin@51.250.107.205:/home/admin/app
+          scp -r ./* admin@${{ github.event.inputs.server }}:/home/admin/app
 
       # Step 5: SSH into the server and run Docker Compose commands
       - name: Deploy with Docker Compose
         run: |
-          ssh admin@51.250.107.205 << 'EOF'
+          ssh admin@${{ github.event.inputs.server }} << 'EOF'
             cd /home/admin/app
             sudo docker-compose down
             sudo docker-compose up -d --build
