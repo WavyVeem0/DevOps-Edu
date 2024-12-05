@@ -32,7 +32,10 @@ jobs:
       #Step 3.5 List of files
       - name: Create app dir if necesarry
         continue-on-error: true
-        run: mkdir -p /home/admin/app
+        run: |
+          ssh admin@${{ github.event.inputs.server }} << 'EOF'
+            mkdir /home/admin/app
+          EOF
 
       # Step 4: Copy application code to the server
       - name: Copy files to remote server
