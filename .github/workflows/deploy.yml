@@ -39,10 +39,10 @@ jobs:
       - name: Setup docker
         run: |
             ssh admin@${{ github.event.inputs.server }} << 'EOF'
-             sudo systemctl start docker
              for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
              sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-             sudo chmod +x /usr/local/bin/docker-compose 
+             sudo chmod +x /usr/local/bin/docker-compose
+             sudo systemctl start docker
             EOF
 
       # Step 4: Copy application code to the server
